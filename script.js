@@ -10,6 +10,7 @@ function pressUp(event) {
         }
     }
 } 
+document.addEventListener('keyup', pressUp);
 
 function jump() {
     isJumping = true;
@@ -23,22 +24,21 @@ function jump() {
                     isJumping = false;
                     clearInterval(dawnInterval);
                 }
-                position -= 10;
+                position -= 13;
 
                 dino.style.bottom = position + `px`;
             },20);
         } else{
 
-            position += 10;
+            position += 13;
             dino.style.bottom = position + `px`;
         }
     },20);
 
 }  
-
 function createCactus(){
     const cactus = document.createElement('div');
-    let cactusPosition = 1300;
+    let cactusPosition = 1700;
     let randomTime = Math.random() * 6000;
 
     cactus.classList.add('cactus');
@@ -53,14 +53,11 @@ function createCactus(){
             clearInterval(leftIterval);
             document.body.innerHTML = `<h1 class="game-over">você perdeu</h1>`;
         } else{
-            cactusPosition -= 10; 
+            cactusPosition -= 8.5; 
             cactus.style.left = cactusPosition + `px`;
         }
     },20);
 
-    setTimeout(createCactus,randomTime);
+    setTimeout(createCactus, randomTime);
 }
-
 createCactus();
-
-document.addEventListener('keyup', pressUp);
